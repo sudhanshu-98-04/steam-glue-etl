@@ -22,9 +22,9 @@ jobs:
 
       - name: Upload Glue scripts to S3
         run: |
-          aws s3 sync glue-jobs s3://steam-github-sync-bucket/glue-scripts/
+          aws s3 sync glue-job s3://steam-github-sync-bucket/glue-scripts/
 
-      - name: Update Glue jobs with latest scripts
+      - name: Update Glue job with latest scripts
         run: |
           aws glue update-job --job-name reviews_silver_job \
             --job-update Command='{Name=glueetl,ScriptLocation=s3://steam-github-sync-bucket/glue-scripts/reviews_transformations.py}'
